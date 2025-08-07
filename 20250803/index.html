@@ -5,12 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>El – A Faithful Sister</title>
   <style>
-    html, body { margin:0; padding:0; height:100%; background:#000; color:#fff; font-family:sans-serif; overflow:hidden; touch-action:none; }
-    #impress { width:100%; height:100%; position:absolute; transform-style:preserve-3d; }
-    .step { width:90vw; height:90vh; display:flex; justify-content:center; align-items:center; text-align:center; font-size:6vw; padding:1rem; opacity:0; animation:fadeIn 1s ease forwards; }
-    .highlight { color:#ff69b4; font-weight:bold; }
-    @keyframes fadeIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-    audio { position:fixed; bottom:10px; left:10px; z-index:10; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+    #impress {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .step {
+      width: 90vw;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 6vw;
+      margin: auto;
+      padding: 1rem;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+    .highlight {
+      color: #ff69b4;
+      font-weight: bold;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    audio {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
@@ -26,31 +62,42 @@
   <div class="step" data-x="3000" data-y="0">Your <span class="highlight">love for God</span> inspires everyone around you.</div>
   <div class="step" data-x="4000" data-y="0">I'm truly <span class="highlight">amazed</span> by your faith.</div>
   <div class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="360" data-rotate-y="180" data-scale="2">
-    <p style="font-size:4vw;">All these words form your name:</p>
-    <h1 style="font-size:10vw; letter-spacing:0.2em;">E L</h1>
+    <p style="font-size: 4vw;">All these words form your name:</p>
+    <h1 style="font-size: 10vw; letter-spacing: 0.2em;">E L</h1>
   </div>
 </div>
 
+<!-- Force impress.js to load on mobile -->
 <script>
-  // Override Impress.js mobile fallback
-  Object.defineProperty(navigator, 'userAgent', {
-    get: () => navigator.userAgent.replace(/\b(Mobile|Android|iPhone|iPad)\b/g, '')
-  });
+  (function() {
+    var userAgent = navigator.userAgent;
+    window.navigator.__defineGetter__('userAgent', function () {
+      return userAgent.replace(/Mobile|Android|iP(ad|hone)/gi, '');
+    });
+  })();
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const api = impress();
-    api.init();
+  impress().init();
 
-    let startX = 0;
-    document.addEventListener('touchstart', e => startX = e.changedTouches[0].clientX);
-    document.addEventListener('touchend', e => {
-      const delta = e.changedTouches[0].clientX - startX;
-      if (delta < -50) api.next();
-      else if (delta > 50) api.prev();
-    });
+  // Touch swipe support for mobile
+  let startX = null;
+  document.addEventListener("touchstart", function(e) {
+    startX = e.touches[0].clientX;
+  });
+  document.addEventListener("touchend", function(e) {
+    if (startX === null) return;
+    let endX = e.changedTouches[0].clientX;
+    let diffX = startX - endX;
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        impress().next();
+      } else {
+        impress().prev();
+      }
+    }
+    startX = null;
   });
 </script>
 
