@@ -2,145 +2,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>For El - An Encouraging Message</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+  <title>El – A Faithful Sister</title>
   <style>
-    html, body {
-      height: 100%;
-      overflow: hidden;
+    body {
       margin: 0;
-      font-family: 'Raleway', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #000;
       color: #fff;
+      overflow-x: hidden;
     }
-    .background {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      z-index: -2;
-    }
-    .stars {
-      width: 2px;
-      height: 2px;
-      background: white;
-      position: absolute;
-      border-radius: 100%;
-      animation: twinkle 2s infinite ease-in-out;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.5); }
+    #impress {
+      position: relative;
+      transform-style: preserve-3d;
     }
     .step {
       position: absolute;
       width: 90%;
-      height: 80%;
-      padding: 20px;
+      padding: 1em;
       text-align: center;
       font-size: 2.5em;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
       opacity: 0;
-      transition: opacity 1.5s ease-in;
+      animation: fadeIn 2s ease forwards;
     }
-    .step.active { opacity: 1; }
     .highlight {
-      color: #FFD700;
-      font-weight: 800;
-      font-size: 1.2em;
+      color: #ff69b4;
+      font-weight: bold;
     }
-    .el-name {
-      font-size: 6em;
-      font-weight: 800;
-      color: #FFD700;
-      text-shadow: 0 0 30px #FFD700, 0 0 60px #fff;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-    .supporting-text {
-      font-size: 1em;
-      margin-top: 20px;
-      color: #ccc;
+    #music {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
 
-<div class="background" id="bg-stars"></div>
-
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/08/01/audio_5f3834b963.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio id="music" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/03/08/audio_4f8999ba85.mp3?filename=inspiring-emotional-piano-ambient-116199.mp3" type="audio/mpeg">
 </audio>
 
 <div id="impress">
-  <div class="step" data-x="0" data-y="0"><div>Hi <span class="highlight">El</span>! 👋</div></div>
-  <div class="step" data-x="1000" data-y="0"><div>You are a <span class="highlight">wonderful sister in faith</span>.</div></div>
-  <div class="step" data-x="2000" data-y="0"><div>You <span class="highlight">shine</span> with beauty—inside and out.</div></div>
-  <div class="step" data-x="3000" data-y="0"><div>Your <span class="highlight">love for God</span> is so inspiring 💖</div></div>
-  <div class="step" data-x="4000" data-y="0"><div>You bring <span class="highlight">joy and light</span> to our fellowship 🌟</div></div>
-  <div class="step" data-x="5000" data-y="0"><div>You are <span class="highlight">strong yet gentle</span>, just like Jesus 💪🌿</div></div>
-  <div class="step" data-x="6000" data-y="0"><div>I’m honestly <span class="highlight">amazed</span> by your faith 🙏</div></div>
-  <div class="step" data-x="7000" data-y="0" data-rotate-x="45" data-rotate-y="45" data-scale="0.5">
-    <div>Keep shining, El. ✨<br><br><span class="highlight">God is using you powerfully!</span></div>
-  </div>
-
-  <!-- Final 3D Slide -->
-  <div class="step" data-x="9000" data-y="0" data-z="0" data-scale="1">
-    <div style="position: relative; width: 100%; height: 100%; perspective: 1500px;">
-      <div class="el-name" style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">
-        EL
-      </div>
-      <div class="supporting-text" style="position: absolute; top: 10%; left: 20%; transform: rotateY(30deg) translateZ(300px);">
-        Beautiful inside and out ✨
-      </div>
-      <div class="supporting-text" style="position: absolute; top: 75%; left: 10%; transform: rotateY(-25deg) translateZ(200px);">
-        Faith that moves mountains ⛰️
-      </div>
-      <div class="supporting-text" style="position: absolute; top: 15%; right: 10%; transform: rotateY(40deg) translateZ(250px);">
-        Loves God deeply 💖
-      </div>
-      <div class="supporting-text" style="position: absolute; bottom: 15%; right: 20%; transform: rotateY(-40deg) translateZ(300px);">
-        Shines with Christ’s light 🌟
-      </div>
-      <div class="supporting-text" style="position: absolute; top: 35%; left: 5%; transform: rotateX(20deg) translateZ(200px);">
-        Joyful, gentle, and strong 🌿💪
-      </div>
-      <div class="supporting-text" style="position: absolute; bottom: 25%; left: 30%; transform: rotateY(60deg) translateZ(300px);">
-        Truly inspiring in every way 💫
-      </div>
-      <div class="supporting-text" style="position: absolute; top: 60%; right: 15%; transform: rotateY(-60deg) translateZ(250px);">
-        Loved, chosen, and shining ✝️
-      </div>
-    </div>
+  <div class="step" data-x="0" data-y="0">Hi <span class="highlight">El</span>!</div>
+  <div class="step" data-x="1000" data-y="0">You are an <span class="highlight">amazing sister</span> in faith.</div>
+  <div class="step" data-x="2000" data-y="0">You shine with <span class="highlight">inner and outer beauty</span>.</div>
+  <div class="step" data-x="3000" data-y="0">Your <span class="highlight">love for God</span> inspires everyone around you.</div>
+  <div class="step" data-x="4000" data-y="0">I'm truly <span class="highlight">amazed</span> by your faith.</div>
+  <div class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="360" data-rotate-y="180" data-scale="2">
+    <p>All these words form your name:</p>
+    <h1 style="font-size: 4em; letter-spacing: 0.2em;">E L</h1>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
-<script>
-  var api = impress(); api.init();
-  document.addEventListener("impress:stepenter", function (event) {
-    document.querySelectorAll(".step").forEach(function(step) {
-      step.classList.remove("active");
-    });
-    event.target.classList.add("active");
-  });
-  const starsContainer = document.getElementById("bg-stars");
-  for (let i = 0; i < 120; i++) {
-    let star = document.createElement("div");
-    star.className = "stars";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.left = Math.random() * 100 + "%";
-    star.style.animationDuration = (1 + Math.random() * 2) + "s";
-    starsContainer.appendChild(star);
-  }
-</script>
+<script>impress().init();</script>
 
 </body>
 </html>
