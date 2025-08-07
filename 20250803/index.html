@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>El – A Faithful Sister</title>
   <style>
     html, body {
@@ -11,15 +11,18 @@
       height: 100%;
       background: #000;
       color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
+      touch-action: none; /* Prevents default scrolling behavior */
     }
+
     #impress {
-      height: 100%;
+      position: absolute;
       width: 100%;
-      position: relative;
+      height: 100%;
       transform-style: preserve-3d;
     }
+
     .step {
       width: 90vw;
       height: 90vh;
@@ -28,19 +31,21 @@
       align-items: center;
       text-align: center;
       font-size: 6vw;
-      margin: auto;
       padding: 1rem;
       opacity: 0;
-      animation: fadeIn 2s ease forwards;
+      animation: fadeIn 1s ease forwards;
     }
+
     .highlight {
       color: #ff69b4;
       font-weight: bold;
     }
+
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+
     audio {
       position: fixed;
       bottom: 10px;
@@ -69,32 +74,33 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
 <script>
-  // Initialize impress
   document.addEventListener('DOMContentLoaded', function () {
-    impress().init();
-  });
+    const api = impress();
+    api.init();
 
-  // Add swipe support
-  let touchStartX = 0;
-  let touchEndX = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-  document.addEventListener('touchstart', function (e) {
-    touchStartX = e.changedTouches[0].screenX;
-  }, false);
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].clientX;
+    });
 
-  document.addEventListener('touchend', function (e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleGesture();
-  }, false);
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
 
-  function handleGesture() {
-    const threshold = 50;
-    if (touchEndX < touchStartX - threshold) {
-      impress().next();
-    } else if (touchEndX > touchStartX + threshold) {
-      impress().prev();
+    function handleSwipe() {
+      const delta = touchEndX - touchStartX;
+      if (delta < -50) {
+        console.log('Swipe Left → Next slide');
+        api.next();
+      } else if (delta > 50) {
+        console.log('Swipe Right → Previous slide');
+        api.prev();
+      }
     }
-  }
+  });
 </script>
 
 </body>
