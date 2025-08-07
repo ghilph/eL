@@ -2,34 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>El – A Faithful Sister</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       background: #000;
       color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow: hidden;
     }
 
+    #impress {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
     .step {
-      width: 90%;
-      height: 90%;
-      padding: 1rem;
-      font-size: 6vw;
-      line-height: 1.5;
-      text-align: center;
-      border-radius: 10px;
-      box-sizing: border-box;
+      width: 90vw;
+      height: 90vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      text-align: center;
+      font-size: 6vw;
+      margin: auto;
+      padding: 1rem;
       opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
+      animation: fadeIn 2s ease forwards;
     }
 
     .highlight {
@@ -38,59 +42,67 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     audio {
       position: fixed;
       bottom: 10px;
       left: 10px;
-      z-index: 1000;
-    }
-
-    h1 {
-      font-size: 10vw;
-      letter-spacing: 0.2em;
-    }
-
-    p {
-      font-size: 4vw;
-    }
-
-    #impress {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
 
+<!-- Background Music -->
 <audio autoplay loop>
   <source src="https://cdn.pixabay.com/download/audio/2023/03/08/audio_4f8999ba85.mp3?filename=inspiring-emotional-piano-ambient-116199.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Impress Presentation -->
 <div id="impress">
   <div class="step" data-x="0" data-y="0">Hi <span class="highlight">El</span>!</div>
   <div class="step" data-x="1000" data-y="0">You are an <span class="highlight">amazing sister</span> in faith.</div>
   <div class="step" data-x="2000" data-y="0">You shine with <span class="highlight">inner and outer beauty</span>.</div>
   <div class="step" data-x="3000" data-y="0">Your <span class="highlight">love for God</span> inspires everyone around you.</div>
   <div class="step" data-x="4000" data-y="0">I'm truly <span class="highlight">amazed</span> by your faith.</div>
-  <div class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="360" data-rotate-y="180" data-scale="1.5">
-    <p>All these words form your name:</p>
-    <h1>E L</h1>
+  <div class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="360" data-rotate-y="180" data-scale="2">
+    <p style="font-size: 4vw;">All these words form your name:</p>
+    <h1 style="font-size: 10vw; letter-spacing: 0.2em;">E L</h1>
   </div>
 </div>
 
+<!-- Impress.js & Mobile Swipe Support -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
 <script>
+  // Initialize impress
   document.addEventListener('DOMContentLoaded', function () {
     impress().init();
   });
+
+  // Add swipe support for touch devices
+  let startX = 0;
+  let endX = 0;
+
+  document.addEventListener('touchstart', function (e) {
+    startX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener('touchend', function (e) {
+    endX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+
+  function handleGesture() {
+    const threshold = 50; // minimum swipe distance
+    if (endX < startX - threshold) {
+      impress().next();
+    } else if (endX > startX + threshold) {
+      impress().prev();
+    }
+  }
 </script>
 
 </body>
