@@ -14,12 +14,14 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow: hidden;
     }
+
     #impress {
       height: 100%;
       width: 100%;
       position: relative;
       transform-style: preserve-3d;
     }
+
     .step {
       width: 90vw;
       height: 90vh;
@@ -31,16 +33,19 @@
       margin: auto;
       padding: 1rem;
       opacity: 0;
-      animation: fadeIn 2s ease forwards;
+      animation: fadeIn 1.5s ease forwards;
     }
+
     .highlight {
       color: #ff69b4;
       font-weight: bold;
     }
+
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
     audio {
       position: fixed;
       bottom: 10px;
@@ -67,29 +72,22 @@
   </div>
 </div>
 
-<!-- Force impress.js to load on mobile -->
+<script src="impress.js"></script>
 <script>
-  (function() {
-    var userAgent = navigator.userAgent;
-    window.navigator.__defineGetter__('userAgent', function () {
-      return userAgent.replace(/Mobile|Android|iP(ad|hone)/gi, '');
-    });
-  })();
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
-<script>
+  // Initialize impress.js
   impress().init();
 
-  // Touch swipe support for mobile
+  // Enable touch swipe
   let startX = null;
-  document.addEventListener("touchstart", function(e) {
+  document.addEventListener("touchstart", function (e) {
     startX = e.touches[0].clientX;
   });
-  document.addEventListener("touchend", function(e) {
+
+  document.addEventListener("touchend", function (e) {
     if (startX === null) return;
-    let endX = e.changedTouches[0].clientX;
-    let diffX = startX - endX;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+
     if (Math.abs(diffX) > 50) {
       if (diffX > 0) {
         impress().next();
@@ -97,6 +95,7 @@
         impress().prev();
       }
     }
+
     startX = null;
   });
 </script>
