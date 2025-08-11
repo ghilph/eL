@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Encouraging Auto-Slideshow</title>
-    <style>
-        body {
-            background: linear-gradient(120deg, #222, #444);
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-        }
+<meta charset="utf-8" />
+<title>Encouraging Auto-Slideshow (Mobile)</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #1b2735, #090a0f);
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        overflow: hidden;
+    }
+    .step {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 2em;
+        width: 100vw;
+        height: 100vh;
+        padding: 20px;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 1s ease;
+    }
+    .step.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Mobile Portrait Mode */
+    @media (max-width: 768px) {
         .step {
-            font-size: 2.5em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            width: 100vw;
-            height: 100vh;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 1s ease;
+            font-size: 1.6em;
+            padding: 10px;
         }
-        .step.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-    </style>
+    }
+
+    /* Animation Variants */
+    .fadeIn { animation: fadeIn 1s ease forwards; }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    .slideIn { animation: slideIn 1s ease forwards; }
+    @keyframes slideIn { from {transform:translateX(100%);} to {transform:translateX(0);} }
+
+    .zoomIn { animation: zoomIn 1s ease forwards; }
+    @keyframes zoomIn { from {transform:scale(0.5);} to {transform:scale(1);} }
+
+    .rotateIn { animation: rotateIn 1s ease forwards; }
+    @keyframes rotateIn { from {transform:rotate(-180deg); opacity:0;} to {transform:rotate(0); opacity:1;} }
+
+</style>
 </head>
 <body>
 
 <div id="impress">
-    <div id="step1" class="step" data-x="0" data-y="0">✨ Hi El! ✨</div>
-    <div id="step2" class="step" data-x="1000" data-y="0">💖 You know what...</div>
-    <div id="step3" class="step" data-x="2000" data-y="0">🌟 You are an amazing sister!</div>
-    <div id="step4" class="step" data-x="3000" data-y="0">💎 You bring joy to us!</div>
-    <div id="step5" class="step" data-x="4000" data-y="0">🙏 Because you love God so much!</div>
-    <div id="step6" class="step" data-x="5000" data-y="0">💌 Keep shining your light! Matthew 5:16</div>
+    <div class="step fadeIn">✨ Hi El! ✨</div>
+    <div class="step slideIn">💖 You know what...</div>
+    <div class="step zoomIn">🌟 You are an amazing sister!</div>
+    <div class="step rotateIn">💎 You bring joy to us!</div>
+    <div class="step fadeIn">🙏 Because you love God so much!</div>
+    <div class="step slideIn">💌 Keep shining your light! <br> <small>Matthew 5:16</small></div>
 </div>
 
 <script src="impress.js"></script>
@@ -49,17 +72,18 @@
     const totalSteps = steps.length;
 
     function showStep(index) {
-        steps.forEach((s, i) => s.classList.toggle("active", i === index));
+        steps.forEach((s, i) => {
+            s.classList.toggle("active", i === index);
+        });
         impress().goto(index);
     }
 
-    // First slide
     showStep(stepIndex);
 
     setInterval(() => {
         stepIndex = (stepIndex + 1) % totalSteps;
         showStep(stepIndex);
-    }, 5000); // change every 5 seconds
+    }, 5000);
 </script>
 
 </body>
