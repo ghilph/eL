@@ -1,88 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Encouraging Auto-Slideshow (Mobile)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encouraging Slideshow</title>
 <style>
     body {
-        background: linear-gradient(135deg, #1b2735, #090a0f);
-        color: white;
-        font-family: 'Segoe UI', sans-serif;
+        background: #111;
+        color: #fff;
+        font-family: 'Arial', sans-serif;
         margin: 0;
         overflow: hidden;
     }
     .step {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         text-align: center;
         font-size: 2em;
-        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 100vh;
+        width: 100%;
         padding: 20px;
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 1s ease;
+        box-sizing: border-box;
+        animation: fadeIn 1s ease-in-out;
     }
-    .step.active {
-        opacity: 1;
-        transform: scale(1);
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
     }
-
-    /* Mobile Portrait Mode */
-    @media (max-width: 768px) {
-        .step {
-            font-size: 1.6em;
-            padding: 10px;
-        }
-    }
-
-    /* Animation Variants */
-    .fadeIn { animation: fadeIn 1s ease forwards; }
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-
-    .slideIn { animation: slideIn 1s ease forwards; }
-    @keyframes slideIn { from {transform:translateX(100%);} to {transform:translateX(0);} }
-
-    .zoomIn { animation: zoomIn 1s ease forwards; }
-    @keyframes zoomIn { from {transform:scale(0.5);} to {transform:scale(1);} }
-
-    .rotateIn { animation: rotateIn 1s ease forwards; }
-    @keyframes rotateIn { from {transform:rotate(-180deg); opacity:0;} to {transform:rotate(0); opacity:1;} }
-
 </style>
 </head>
 <body>
 
 <div id="impress">
-    <div class="step fadeIn">✨ Hi El! ✨</div>
-    <div class="step slideIn">💖 You know what...</div>
-    <div class="step zoomIn">🌟 You are an amazing sister!</div>
-    <div class="step rotateIn">💎 You bring joy to us!</div>
-    <div class="step fadeIn">🙏 Because you love God so much!</div>
-    <div class="step slideIn">💌 Keep shining your light! <br> <small>Matthew 5:16</small></div>
+    <div class="step" data-x="0" data-y="0" data-autoslide="5000">
+        Hi El! 🌟
+    </div>
+    <div class="step" data-x="1000" data-y="0" data-autoslide="5000">
+        You know what...
+    </div>
+    <div class="step" data-x="2000" data-y="0" data-autoslide="5000">
+        You are an amazing sister! 💖
+    </div>
+    <div class="step" data-x="3000" data-y="0" data-autoslide="5000">
+        You bring joy to us! 🌈
+    </div>
+    <div class="step" data-x="4000" data-y="0" data-autoslide="5000">
+        Because you love God so much! ✝️
+    </div>
+    <!-- Encouraging extras -->
+    <div class="step" data-x="5000" data-y="0" data-autoslide="5000">
+        Keep shining your light! 🔥
+    </div>
+    <div class="step" data-x="6000" data-y="0" data-autoslide="5000">
+        God is proud of you. 🙌
+    </div>
+    <div class="step" data-x="7000" data-y="0" data-autoslide="5000">
+        We love you! ❤️
+    </div>
 </div>
 
-<script src="impress.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.min.js"></script>
 <script>
+    // Remove mobile restrictions
     impress().init();
 
-    let stepIndex = 0;
-    const steps = document.querySelectorAll(".step");
-    const totalSteps = steps.length;
-
-    function showStep(index) {
-        steps.forEach((s, i) => {
-            s.classList.toggle("active", i === index);
-        });
-        impress().goto(index);
-    }
-
-    showStep(stepIndex);
-
+    // Auto-slide logic (for browsers without data-autoslide plugin)
+    let steps = document.querySelectorAll(".step");
+    let idx = 0;
     setInterval(() => {
-        stepIndex = (stepIndex + 1) % totalSteps;
-        showStep(stepIndex);
+        idx = (idx + 1) % steps.length;
+        impress().goto(idx);
     }, 5000);
 </script>
 
