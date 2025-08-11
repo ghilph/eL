@@ -1,103 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>El – A Faithful Sister</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow: hidden;
-    }
-
-    #impress {
-      height: 100%;
-      width: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-    }
-
-    .step {
-      width: 90vw;
-      height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-size: 6vw;
-      margin: auto;
-      padding: 1rem;
-      opacity: 0;
-      animation: fadeIn 1.5s ease forwards;
-    }
-
-    .highlight {
-      color: #ff69b4;
-      font-weight: bold;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    audio {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      z-index: 10;
-    }
-  </style>
+    <meta charset="utf-8" />
+    <title>Encouraging Auto-Slideshow</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #222, #444);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+        .step {
+            font-size: 2.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 1s ease;
+        }
+        .step.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
 </head>
 <body>
 
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/03/08/audio_4f8999ba85.mp3?filename=inspiring-emotional-piano-ambient-116199.mp3" type="audio/mpeg">
-</audio>
-
 <div id="impress">
-  <div class="step" data-x="0" data-y="0">Hi <span class="highlight">El</span>!</div>
-  <div class="step" data-x="1000" data-y="0">You are an <span class="highlight">amazing sister</span> in faith.</div>
-  <div class="step" data-x="2000" data-y="0">You shine with <span class="highlight">inner and outer beauty</span>.</div>
-  <div class="step" data-x="3000" data-y="0">Your <span class="highlight">love for God</span> inspires everyone around you.</div>
-  <div class="step" data-x="4000" data-y="0">I'm truly <span class="highlight">amazed</span> by your faith.</div>
-  <div class="step" data-x="5000" data-y="0" data-z="-1000" data-rotate-x="360" data-rotate-y="180" data-scale="2">
-    <p style="font-size: 4vw;">All these words form your name:</p>
-    <h1 style="font-size: 10vw; letter-spacing: 0.2em;">E L</h1>
-  </div>
+    <div id="step1" class="step" data-x="0" data-y="0">✨ Hi El! ✨</div>
+    <div id="step2" class="step" data-x="1000" data-y="0">💖 You know what...</div>
+    <div id="step3" class="step" data-x="2000" data-y="0">🌟 You are an amazing sister!</div>
+    <div id="step4" class="step" data-x="3000" data-y="0">💎 You bring joy to us!</div>
+    <div id="step5" class="step" data-x="4000" data-y="0">🙏 Because you love God so much!</div>
+    <div id="step6" class="step" data-x="5000" data-y="0">💌 Keep shining your light! Matthew 5:16</div>
 </div>
 
 <script src="impress.js"></script>
 <script>
-  // Initialize impress.js
-  impress().init();
+    impress().init();
 
-  // Enable touch swipe
-  let startX = null;
-  document.addEventListener("touchstart", function (e) {
-    startX = e.touches[0].clientX;
-  });
+    let stepIndex = 0;
+    const steps = document.querySelectorAll(".step");
+    const totalSteps = steps.length;
 
-  document.addEventListener("touchend", function (e) {
-    if (startX === null) return;
-    const endX = e.changedTouches[0].clientX;
-    const diffX = startX - endX;
-
-    if (Math.abs(diffX) > 50) {
-      if (diffX > 0) {
-        impress().next();
-      } else {
-        impress().prev();
-      }
+    function showStep(index) {
+        steps.forEach((s, i) => s.classList.toggle("active", i === index));
+        impress().goto(index);
     }
 
-    startX = null;
-  });
+    // First slide
+    showStep(stepIndex);
+
+    setInterval(() => {
+        stepIndex = (stepIndex + 1) % totalSteps;
+        showStep(stepIndex);
+    }, 5000); // change every 5 seconds
 </script>
 
 </body>
