@@ -35,11 +35,13 @@
     body.dark h2 {
       color: #81c784;
     }
-    body.dark .cta button {
+    body.dark .cta button, 
+    body.dark .contact-btn {
       background: #43a047;
       color: white;
     }
-    body.dark .cta button:hover {
+    body.dark .cta button:hover, 
+    body.dark .contact-btn:hover {
       background: #2e7d32;
     }
 
@@ -66,11 +68,13 @@
     body.light h2 {
       color: #2e7d32;
     }
-    body.light .cta button {
+    body.light .cta button, 
+    body.light .contact-btn {
       background: #388e3c;
       color: white;
     }
-    body.light .cta button:hover {
+    body.light .cta button:hover, 
+    body.light .contact-btn:hover {
       background: #2e7d32;
     }
 
@@ -133,7 +137,7 @@
       text-align: center;
       margin: 2rem 0;
     }
-    .cta button {
+    .cta button, .contact-btn {
       border: none;
       padding: 1rem 2rem;
       font-size: 1.1rem;
@@ -150,6 +154,10 @@
     }
     body.light .price-box {
       background: #e8f5e9;
+    }
+    .contact-btn {
+      display: inline-block;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -198,6 +206,7 @@
         <li>And more...</li>
       </ul>
       <p><i>P.S. For other specialized courses or advanced massage techniques, please contact us so we can arrange a custom schedule tailored to your needs.</i></p>
+      <button class="contact-btn" onclick="alert('Redirecting to Contact Page or Email...')">📩 Contact Us</button>
     </section>
 
     <section class="card">
