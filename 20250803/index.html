@@ -1,103 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uplifting Mobile Slideshow</title>
+<meta charset="utf-8">
+<title>Online Presence - Impress.js</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
-    body {
-        margin: 0;
-        background: #111;
-        font-family: Arial, sans-serif;
-        color: white;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .slideshow {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
-    .slide {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transform: scale(1.1);
-        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background-size: cover;
-        background-position: center;
-        padding: 20px;
-    }
-    .slide.active {
-        opacity: 1;
-        transform: scale(1);
-    }
-    .message {
-        background: rgba(0,0,0,0.4);
-        padding: 15px;
-        border-radius: 15px;
-        font-size: 1.5em;
-        animation: fadeInUp 1.2s ease-out;
-    }
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+body {
+font-family: 'Montserrat', sans-serif;
+background: #111;
+color: #fff;
+text-align: center;
+overflow: hidden;
+}
+.step {
+width: 800px;
+height: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 2em;
+border-radius: 20px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+background: rgba(255,255,255,0.05);
+padding: 30px;
+}
+h1 { font-size: 3em; color: #00d9ff; }
+h2 { font-size: 2em; color: #ffdd57; }
+p { font-size: 1.2em; }
 </style>
 </head>
 <body>
+<div id="impress">
 
-<div class="slideshow">
-    <div class="slide active" style="background-image:url('https://picsum.photos/720/1280?random=1')">
-        <div class="message">Hi El! 🌟</div>
-    </div>
-    <div class="slide" style="background-image:url('https://picsum.photos/720/1280?random=2')">
-        <div class="message">You know what... 💭</div>
-    </div>
-    <div class="slide" style="background-image:url('https://picsum.photos/720/1280?random=3')">
-        <div class="message">You are an amazing sister! ❤️</div>
-    </div>
-    <div class="slide" style="background-image:url('https://picsum.photos/720/1280?random=4')">
-        <div class="message">You bring joy to us! 🎉</div>
-    </div>
-    <div class="slide" style="background-image:url('https://picsum.photos/720/1280?random=5')">
-        <div class="message">Because you love God so much! ✝️</div>
-    </div>
-    <div class="slide" style="background-image:url('https://picsum.photos/720/1280?random=6')">
-        <div class="message">Keep shining your light! 🔆</div>
-    </div>
-    <div class="slide" style="background-image:url('https://picsum.photos/720/1280?random=7')">
-        <div class="message">God’s plans for you are beautiful! 🌈</div>
-    </div>
+
+<div id="intro" class="step" data-x="0" data-y="0">
+<h1>Building an Online Presence</h1>
 </div>
 
-<script>
-    const slides = document.querySelectorAll('.slide');
-    let index = 0;
 
-    setInterval(() => {
-        slides[index].classList.remove('active');
-        index = (index + 1) % slides.length;
-        slides[index].classList.add('active');
-    }, 5000);
-</script>
+<div id="why" class="step" data-x="1200" data-y="0">
+<h2>Why is it Important?</h2>
+<p>✔ Visibility <br> ✔ Credibility <br> ✔ Opportunities</p>
+</div>
 
+
+<div id="channels" class="step" data-x="2400" data-y="0">
+<h2>Key Channels</h2>
+<p>🌐 Website <br> 📱 Social Media <br> 📩 Email <br> 💼 LinkedIn</p>
+</div>
+
+
+<div id="strategy" class="step" data-x="3600" data-y="0">
+<h2>Strategy</h2>
+<p>✅ Consistency <br> ✅ Quality Content <br> ✅ Engagement <br> ✅ Analytics</p>
+</div>
+
+
+<div id="conclusion" class="step" data-x="4800" data-y="0">
+<h1>Go Digital. Stay Visible.</h1>
+<p>Strengthen your online presence today 🚀</p>
+</div>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/impress.js@0.5.3/js/impress.min.js"></script>
+<script>impress().init();</script>
 </body>
 </html>
