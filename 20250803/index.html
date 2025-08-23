@@ -142,6 +142,15 @@
       transition: 0.3s;
       margin: .5rem;
     }
+    .price-box {
+      background: #2e2e2e;
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+    }
+    body.light .price-box {
+      background: #e8f5e9;
+    }
   </style>
 </head>
 <body class="dark">
@@ -180,14 +189,31 @@
 
     <section class="card">
       <h2>✨ Special Programs</h2>
-      <p>We also offer <b>special training programs</b> outside the regular schedule.</p>
+      <p>We also offer <b>special training programs</b> outside the regular schedule:</p>
+      <ul>
+        <li>Ventosa Therapy</li>
+        <li>Lymphatic Massage</li>
+        <li>Thai Herbal Ball Therapy</li>
+        <li>Warm Bamboo Massage</li>
+        <li>And more...</li>
+      </ul>
       <p><i>P.S. For other specialized courses or advanced massage techniques, please contact us so we can arrange a custom schedule tailored to your needs.</i></p>
+    </section>
+
+    <section class="card">
+      <h2>💰 Enrollment Fees</h2>
+      <div class="price-box">
+        <p><b>Lectures & Theory Only:</b> ₱4,800.00</p>
+        <p><b>Full Training (with Hands-on):</b> ₱8,800.00</p>
+      </div>
     </section>
 
     <section class="cta">
       <h2>📍 Join Us Today</h2>
-      <p>Whether you’re starting a career in massage therapy or enhancing your current skills, our academy provides the perfect balance of knowledge and practice to help you succeed.</p>
-      <button>Enroll Now</button>
+      <p>Choose your training option and begin your journey with us.</p>
+      <!-- Two separate Enroll buttons -->
+      <button onclick="alert('Redirecting to Lectures & Theory enrollment form...')">Enroll for Lectures & Theory (₱4,800)</button>
+      <button onclick="alert('Redirecting to Full Training enrollment form...')">Enroll for Full Training (₱8,800)</button>
     </section>
   </div>
 
