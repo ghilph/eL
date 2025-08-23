@@ -20,29 +20,40 @@
       background: rgba(10, 10, 10, 0.85);
       margin: auto;
       text-align: center;
-      opacity: 0; /* Start hidden */
-      transition: opacity 1s ease-in;
+      opacity: 0; /* hidden initially */
+      transition: opacity 0.6s ease-in;
+    }
+
+    .step.active {
+      opacity: 1; /* visible when active */
     }
 
     /* Animate elements inside slides */
     .step.active h1,
     .step.active h2,
     .step.active p,
-    .step.active li,
-    .step.active img {
+    .step.active img,
+    .step.active li {
       opacity: 0;
       animation: fadeIn 1s ease forwards;
     }
 
+    /* base delays */
     .step.active h1,
     .step.active h2 { animation-delay: 0.2s; }
     .step.active p    { animation-delay: 0.4s; }
-    .step.active li   { animation-delay: 0.6s; }
     .step.active img  { animation-delay: 0.8s; }
 
+    /* stagger list items */
+    .step.active li:nth-child(1) { animation-delay: 0.6s; }
+    .step.active li:nth-child(2) { animation-delay: 0.9s; }
+    .step.active li:nth-child(3) { animation-delay: 1.2s; }
+    .step.active li:nth-child(4) { animation-delay: 1.5s; }
+    .step.active li:nth-child(5) { animation-delay: 1.8s; }
+
     @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
       from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     h1, h2 {
@@ -151,10 +162,9 @@
 <!-- Load impress.js -->
 <script src="https://cdn.jsdelivr.net/npm/impress.js@1.1.0/js/impress.min.js"></script>
 <script>
-  // Initialize impress.js
   impress().init();
 
-  // Add fade-in effect when a step becomes active
+  // Add/remove .active class for animation reset
   document.addEventListener("impress:stepenter", function (event) {
     event.target.classList.add("active");
   });
