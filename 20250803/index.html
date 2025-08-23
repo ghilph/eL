@@ -1,71 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Online Presence - Impress.js</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<style>
-body {
-font-family: 'Montserrat', sans-serif;
-background: #111;
-color: #fff;
-text-align: center;
-overflow: hidden;
-}
-.step {
-width: 800px;
-height: 500px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 2em;
-border-radius: 20px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-background: rgba(255,255,255,0.05);
-padding: 30px;
-}
-h1 { font-size: 3em; color: #00d9ff; }
-h2 { font-size: 2em; color: #ffdd57; }
-p { font-size: 1.2em; }
-</style>
+  <meta charset="UTF-8" />
+  <title>Online Presence – JARVIS Presentation</title>
+  <meta name="viewport" content="width=1024" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/impress.js/css/impress-demo.css" />
+  <style>
+    .step {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      color: white;
+      background: #1f1f1f;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0,255,255,0.4);
+    }
+  </style>
 </head>
 <body>
+
 <div id="impress">
 
+  <div id="title" class="step" data-x="0" data-y="0">
+    <h1>Mastering Your Online Presence</h1>
+    <p>Welcome to the Digital You</p>
+  </div>
 
-<div id="intro" class="step" data-x="0" data-y="0">
-<h1>Building an Online Presence</h1>
+  <div class="step" data-x="1000" data-y="0">
+    <h2>What is Online Presence?</h2>
+    <p>It’s how you appear, act, and are perceived across the internet.</p>
+  </div>
+
+  <div class="step" data-x="2000" data-y="0">
+    <h2>Why It Matters</h2>
+    <p>Your digital footprint affects jobs, relationships, credibility, and influence.</p>
+  </div>
+
+  <div class="step" data-x="3000" data-y="0">
+    <h2>Social Media Footprint</h2>
+    <ul>
+      <li>Be intentional with posts</li>
+      <li>Separate personal & professional</li>
+      <li>Consistency is key</li>
+    </ul>
+  </div>
+
+  <div class="step" data-x="4000" data-y="0">
+    <h2>Personal Branding</h2>
+    <p>Craft your story. Define your message. Stand out.</p>
+  </div>
+
+  <div class="step" data-x="5000" data-y="0">
+    <h2>SEO & Discoverability</h2>
+    <p>Google yourself. Control the top results. Own your name.</p>
+  </div>
+
+  <div class="step" data-x="6000" data-y="0">
+    <h2>Privacy & Security</h2>
+    <p>Use strong passwords, two-factor auth, and limit oversharing.</p>
+  </div>
+
+  <div class="step" data-x="7000" data-y="0">
+    <h2>Tools & Tips</h2>
+    <ul>
+      <li>Google Alerts</li>
+      <li>LinkedIn, About.me</li>
+      <li>Content scheduling apps</li>
+    </ul>
+  </div>
+
+  <div class="step" data-x="8000" data-y="0">
+    <h2>The Future</h2>
+    <p>Your digital twin may outlive you. Curate wisely.</p>
+  </div>
+
+  <div class="step" data-x="9000" data-y="0">
+    <h2>Take Control Now</h2>
+    <p>You’re already online. Time to own it.</p>
+  </div>
+
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/impress.js/js/impress.min.js"></script>
+<script>
+  impress().init();
+</script>
 
-<div id="why" class="step" data-x="1200" data-y="0">
-<h2>Why is it Important?</h2>
-<p>✔ Visibility <br> ✔ Credibility <br> ✔ Opportunities</p>
-</div>
-
-
-<div id="channels" class="step" data-x="2400" data-y="0">
-<h2>Key Channels</h2>
-<p>🌐 Website <br> 📱 Social Media <br> 📩 Email <br> 💼 LinkedIn</p>
-</div>
-
-
-<div id="strategy" class="step" data-x="3600" data-y="0">
-<h2>Strategy</h2>
-<p>✅ Consistency <br> ✅ Quality Content <br> ✅ Engagement <br> ✅ Analytics</p>
-</div>
-
-
-<div id="conclusion" class="step" data-x="4800" data-y="0">
-<h1>Go Digital. Stay Visible.</h1>
-<p>Strengthen your online presence today 🚀</p>
-</div>
-
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/impress.js@0.5.3/js/impress.min.js"></script>
-<script>impress().init();</script>
 </body>
 </html>
